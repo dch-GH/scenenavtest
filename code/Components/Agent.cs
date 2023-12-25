@@ -50,8 +50,11 @@ public sealed class Agent : Component
 				_buffer.Add( s );
 		}
 
-		Gizmo.Draw.Color = Color.Green;
-		Gizmo.Draw.LineSphere( _destination, 16 );
+		if ( !Transform.Position.AlmostEqual( _destination, 10 ) )
+		{
+			Gizmo.Draw.Color = Color.Green;
+			Gizmo.Draw.LineCylinder( _destination, _destination + Vector3.Up * 100, _cc.Radius, _cc.Radius, 20 );
+		}
 
 		DrawNavSegments( _buffer, Color.Blue );
 	}
@@ -83,8 +86,8 @@ public sealed class Agent : Component
 
 			var debugOrigin = screenRay.Position + screenRay.Forward * 50;
 			Gizmo.Draw.LineCylinder( debugOrigin, tr.HitPosition, 1, 1, 32 );
-			Gizmo.Draw.Color = Color.Cyan;
-			Gizmo.Draw.LineCylinder( tr.HitPosition, tr.HitPosition + Vector3.Up * 100, 8, 8, 24 );
+			Gizmo.Draw.Color = Color.Green;
+			Gizmo.Draw.LineCylinder( tr.HitPosition, tr.HitPosition + Vector3.Up * 100, _cc.Radius, _cc.Radius, 20 );
 
 			DrawNavSegments( _currentPath.Segments, Color.Cyan );
 		}
@@ -131,7 +134,7 @@ public sealed class Agent : Component
 			{
 				var dir = (p2.Position - p1.Position).Normal;
 				var rot = Rotation.LookAt( dir, Vector3.Up );
-				using ( Gizmo.Scope( null, p2.Position, Rotation.Identity, 1.5f ) )
+				using ( Gizmo.Scope( "navsegments", p2.Position, Rotation.Identity, 1.5f ) )
 				{
 					Gizmo.Draw.Color = Color.Green;
 					Gizmo.Draw.Line( Vector3.Zero, dir + rot.Right * 27 + rot.Backward * 25 );

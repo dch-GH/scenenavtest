@@ -2,8 +2,6 @@
 
 public sealed class NavmeshComponent : Component
 {
-	[Property] private bool _debugDraw { get; set; } = true;
-
 	public NavigationMesh NavMesh { get; private set; }
 
 	protected override void OnAwake()
@@ -23,10 +21,10 @@ public sealed class NavmeshComponent : Component
 
 	protected override void OnUpdate()
 	{
-		if ( !_debugDraw )
-			return;
-
-		Gizmo.Draw.Color = Color.Cyan;
-		Gizmo.Draw.LineNavigationMesh( NavMesh );
+		using ( Gizmo.Scope( "navmesh" ) )
+		{
+			Gizmo.Draw.Color = Color.Cyan;
+			Gizmo.Draw.LineNavigationMesh( NavMesh );
+		}
 	}
 }
