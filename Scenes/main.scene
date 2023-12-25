@@ -1,0 +1,144 @@
+{
+  "GameObjects": [
+    {
+      "Id": "11a3d77e-4169-4f80-bf6a-ee0720aacc75",
+      "Name": "Map",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "MapInstance",
+          "__enabled": true,
+          "MapName": "fdd.dungeon"
+        },
+        {
+          "__type": "NavmeshComponent",
+          "__enabled": true,
+          "_debugDraw": true
+        }
+      ],
+      "Children": []
+    },
+    {
+      "Id": "d9e1daad-13a3-4ebc-adc7-8053195bc2da",
+      "Name": "Agent",
+      "Position": "0,0,3.865709",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "CharacterController",
+          "__enabled": true,
+          "Acceleration": 10,
+          "GroundAngle": 45,
+          "Height": 61.45,
+          "IgnoreLayers": "",
+          "Radius": 30.92,
+          "StepHeight": 18
+        },
+        {
+          "__type": "Agent",
+          "__enabled": true
+        }
+      ],
+      "Children": [
+        {
+          "Id": "db1fc44a-0295-4a23-9555-464d393d7144",
+          "Name": "Sphere",
+          "Position": "0,0,29.45799",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/dev/sphere.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "6940a50a-1225-486a-800a-556576d19b79",
+      "Name": "Sun",
+      "Position": "-439.9388,-1043.298,188.9799",
+      "Rotation": "-0.00000005560008,0.9328145,0.0000000000000009098295,0.3603576",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "DirectionalLight",
+          "__enabled": true,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Shadows": true,
+          "SkyColor": "0.05882,0.07451,0.08235,1"
+        }
+      ]
+    },
+    {
+      "Id": "88d31a98-a967-49ed-a564-88d955902603",
+      "Name": "Camera",
+      "Position": "306.4725,-1211.651,878.9023",
+      "Rotation": "-0.3519706,0.1502108,0.8497335,0.3626394",
+      "Tags": "maincamera",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "CameraComponent",
+          "__enabled": true,
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 90,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 10
+        },
+        {
+          "__type": "PanningCameraController",
+          "__enabled": true,
+          "MoveSpeed": 1500
+        }
+      ]
+    },
+    {
+      "Id": "5afd1f97-7a71-4be3-aed5-252e0058d5ec",
+      "Name": "Screen",
+      "Position": "778.0211,-1409.158,907.1707",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ScreenPanel",
+          "__enabled": true,
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
+        },
+        {
+          "__type": "GUI",
+          "__enabled": true
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "Lerping": true,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true
+  },
+  "Title": "main",
+  "Description": "",
+  "__references": []
+}

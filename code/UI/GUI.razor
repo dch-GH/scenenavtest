@@ -1,0 +1,29 @@
+﻿@using System;
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+@namespace Sandbox.UI
+
+<root>
+    <div class="container">
+        <div>@("WASD to pan.")</div>
+        <div>@($"Hold E to plot, release to start pathing.")</div>
+        <div class="group-column">
+            <div class ="info">Move Speed:</div>
+            <SliderControl @ref=Slider Min=@(150) Max=@(850) Step=@(0.1f) Value:bind=@Agent.MoveSpeed ShowTextEntry="@true"></SliderControl>
+        </div>
+        <div style="padding-top: 16px;"></div>
+        <div style="font-family: Courier New; font-weight: 100;">@($"Map: {Scene.GetAllComponents<MapInstance>().First().MapName}")</div>
+    </div>
+</root>
+
+@code
+{
+    private SliderControl Slider { get; set; }
+
+    protected override int BuildHash()
+    {
+        return System.HashCode.Combine(Time.Now);
+    }
+}
