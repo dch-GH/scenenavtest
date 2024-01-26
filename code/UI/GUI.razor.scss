@@ -29,4 +29,12 @@ GUI {
         display: flex;
         flex-direction: row;
     }
+
+    button {
+        cursor: grab;
+        
+        &:hover {
+            border: 1px solid white;
+        }
+    }
 }

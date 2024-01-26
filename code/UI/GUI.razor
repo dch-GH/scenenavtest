@@ -9,9 +9,13 @@
     <div class="container">
         <div>@("WASD to pan.")</div>
         <div>@($"Hold E to plot, release to start pathing.")</div>
+
         <div class="group-column">
-            <div class ="info">Move Speed:</div>
-            <SliderControl @ref=Slider Min=@(150) Max=@(850) Step=@(0.1f) Value:bind=@Agent.MoveSpeed ShowTextEntry="@true"></SliderControl>
+            <button class="button" @onlick=@RegenClick text="Regenerate Navmesh"></button>
+        </div>
+        <div class="group-column">
+            <div class="info">Move Speed:</div>
+            <SliderControl @ref=AgentMoveSpeedSlider Min=@(150) Max=@(850) Step=@(0.1f) Value:bind=@Agent.MoveSpeed ShowTextEntry="@true"></SliderControl>
         </div>
         <div style="padding-top: 16px;"></div>
         <div style="font-family: Courier New; font-weight: 100;">@($"Map: {Scene.GetAllComponents<MapInstance>().First().MapName}")</div>
@@ -20,7 +24,15 @@
 
 @code
 {
-    private SliderControl Slider { get; set; }
+    [Property] public NavmeshComponent NavmeshComp { get; private set; }
+
+    private SliderControl AgentMoveSpeedSlider { get; set; }
+
+    private void RegenClick()
+    {
+        Log.Error(this);
+        NavmeshComp.Regenerate();
+    }
 
     protected override int BuildHash()
     {

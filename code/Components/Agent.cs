@@ -23,10 +23,12 @@ public sealed class Agent : Component
 	/// </summary>
 	private Vector3 _destination;
 	private CharacterController _cc;
+	private CameraComponent _camera;
 
 	protected override void OnAwake()
 	{
 		_cc = GameObject.Components.Get<CharacterController>();
+		_camera = Scene.GetAllComponents<CameraComponent>().First();
 	}
 
 	public void NavReady( NavigationMesh navmesh )
@@ -70,7 +72,7 @@ public sealed class Agent : Component
 
 	private void TryGeneratePath()
 	{
-		var screenRay = Camera.Main.GetRay( Mouse.Position, Screen.Size );
+		var screenRay = _camera.ScreenPixelToRay( Mouse.Position );
 		var tr = Scene.Trace.Ray( screenRay, 100000f ).UsePhysicsWorld().Run();
 
 		if ( tr.Hit && tr.Normal != Vector3.Up )

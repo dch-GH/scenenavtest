@@ -14,8 +14,7 @@
           "__type": "NavmeshComponent",
           "__enabled": true
         }
-      ],
-      "Children": []
+      ]
     },
     {
       "Id": "d9e1daad-13a3-4ebc-adc7-8053195bc2da",
@@ -123,7 +122,8 @@
         },
         {
           "__type": "GUI",
-          "__enabled": true
+          "__enabled": true,
+          "NavmeshComp": "11a3d77e-4169-4f80-bf6a-ee0720aacc75"
         }
       ]
     }

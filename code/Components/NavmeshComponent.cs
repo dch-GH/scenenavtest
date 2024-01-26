@@ -6,9 +6,16 @@ public sealed class NavmeshComponent : Component
 
 	protected override void OnAwake()
 	{
-		if ( !Scene.Active || !Scene.PhysicsWorld.IsValid() )
+		if ( Scene.IsEditor )
 			return;
 
+		Regenerate();
+	}
+
+	public void Regenerate()
+	{
+		if ( !Scene.Active || !Scene.PhysicsWorld.IsValid() )
+			return;
 		NavMesh = new();
 		NavMesh.Generate( Scene.PhysicsWorld );
 		Log.Info( $"Generated navmesh... Node count: {NavMesh.Nodes.Count}" );
